@@ -1,0 +1,60 @@
+-- Seed: 50 perguntas SQL
+insert into questions (statement, answer, explanation, level, topic) values
+
+-- BEGINNER (15 perguntas)
+('Um banco de dados relacional organiza dados em tabelas com linhas e colunas.', true, 'Exatamente! Bancos relacionais estruturam dados em tabelas (relações), onde cada linha é um registro e cada coluna é um atributo.', 'beginner', 'Conceitos'),
+('SQL significa Structured Query Language.', true, 'SQL é a linguagem padrão para manipular bancos de dados relacionais, padronizada pela ISO/ANSI.', 'beginner', 'Conceitos'),
+('O comando SELECT é usado para deletar registros de uma tabela.', false, 'SELECT é usado para CONSULTAR dados. Para deletar, usamos DELETE FROM tabela WHERE condição.', 'beginner', 'SELECT'),
+('Uma chave primária (PRIMARY KEY) identifica de forma única cada registro em uma tabela.', true, 'A PRIMARY KEY garante unicidade e não pode ser NULL. Cada tabela deve ter no máximo uma chave primária.', 'beginner', 'Chaves'),
+('É possível ter valores duplicados em uma coluna com PRIMARY KEY.', false, 'A PRIMARY KEY exige unicidade. Para permitir duplicatas, simplesmente não defina a coluna como PRIMARY KEY.', 'beginner', 'Chaves'),
+('O comando CREATE TABLE é usado para criar uma nova tabela no banco de dados.', true, 'CREATE TABLE define a estrutura da tabela com nome, colunas e seus tipos de dados.', 'beginner', 'DDL'),
+('NULL representa o valor zero em SQL.', false, 'NULL significa ausência de valor, desconhecido. É diferente de zero ou string vazia. Para comparar com NULL, usamos IS NULL, não = NULL.', 'beginner', 'Conceitos'),
+('O comando DROP TABLE remove uma tabela e todos os seus dados permanentemente.', true, 'DROP TABLE é uma operação destrutiva e irreversível (sem backup). Remove a tabela inteira do banco.', 'beginner', 'DDL'),
+('Uma FOREIGN KEY cria um vínculo entre duas tabelas.', true, 'A chave estrangeira referencia a PRIMARY KEY de outra tabela, garantindo integridade referencial.', 'beginner', 'Chaves'),
+('SELECT * FROM clientes retorna apenas a primeira linha da tabela.', false, 'SELECT * retorna TODAS as colunas e TODOS os registros da tabela. Para limitar, use LIMIT ou TOP.', 'beginner', 'SELECT'),
+('O comando INSERT INTO é usado para adicionar novos registros em uma tabela.', true, 'INSERT INTO tabela (colunas) VALUES (valores) adiciona uma ou mais linhas na tabela.', 'beginner', 'DML'),
+('Uma tabela pode ter várias colunas com a restrição PRIMARY KEY ao mesmo tempo.', false, 'Uma tabela pode ter apenas UMA PRIMARY KEY, mas ela pode ser composta por múltiplas colunas (chave composta).', 'beginner', 'Chaves'),
+('O comando UPDATE modifica registros existentes em uma tabela.', true, 'UPDATE tabela SET coluna = valor WHERE condição. Sem WHERE, atualiza TODOS os registros!', 'beginner', 'DML'),
+('É necessário usar aspas simples para valores de texto em SQL.', true, 'Strings em SQL usam aspas simples: WHERE nome = ''João''. Aspas duplas são para identificadores em alguns SGBDs.', 'beginner', 'Sintaxe'),
+('O comando DELETE sem cláusula WHERE apaga todos os registros da tabela.', true, 'DELETE FROM tabela sem WHERE remove TODOS os registros. Sempre use WHERE para deletar seletivamente!', 'beginner', 'DML'),
+
+-- BASIC (15 perguntas)
+('A cláusula WHERE filtra os resultados depois do GROUP BY.', false, 'WHERE filtra linhas ANTES do agrupamento. HAVING filtra DEPOIS do GROUP BY. Ordem: WHERE → GROUP BY → HAVING.', 'basic', 'Filtros'),
+('O comando DISTINCT remove duplicatas do resultado de uma query.', true, 'SELECT DISTINCT coluna FROM tabela retorna apenas valores únicos, eliminando duplicatas.', 'basic', 'SELECT'),
+('ORDER BY ASC ordena os resultados em ordem decrescente.', false, 'ASC = ascendente (menor para maior). DESC = decrescente (maior para menor). O padrão é ASC quando omitido.', 'basic', 'Ordenação'),
+('A função COUNT(*) conta apenas os registros que não são NULL.', false, 'COUNT(*) conta TODAS as linhas, incluindo NULLs. COUNT(coluna) ignora NULLs nessa coluna específica.', 'basic', 'Agregação'),
+('BETWEEN é inclusivo, ou seja, inclui os valores dos limites na busca.', true, 'WHERE valor BETWEEN 10 AND 20 é equivalente a WHERE valor >= 10 AND valor <= 20. Ambos os extremos são incluídos.', 'basic', 'Filtros'),
+('A função SUM() pode ser usada em colunas de texto.', false, 'SUM() funciona apenas com valores numéricos. Para texto, existem funções como CONCAT ou LENGTH.', 'basic', 'Agregação'),
+('LIKE ''%SQL%'' encontra qualquer string que contenha a palavra SQL.', true, 'O % é um curinga que representa qualquer sequência de caracteres. ''%SQL%'' busca SQL em qualquer posição.', 'basic', 'Filtros'),
+('GROUP BY deve ser usado sempre que a query tiver uma função de agregação.', false, 'Você pode usar COUNT(*), SUM() etc sem GROUP BY — nesse caso, retorna um único valor para toda a tabela.', 'basic', 'Agregação'),
+('IS NULL e = NULL são equivalentes em SQL.', false, 'NULL não pode ser comparado com =. Você deve usar IS NULL ou IS NOT NULL. WHERE col = NULL nunca retorna resultados.', 'basic', 'Filtros'),
+('LIMIT é suportado em todos os bancos de dados relacionais.', false, 'LIMIT é MySQL/PostgreSQL. SQL Server usa TOP. Oracle usa ROWNUM ou FETCH FIRST. A sintaxe varia por SGBD.', 'basic', 'Sintaxe'),
+('AVG() ignora valores NULL no cálculo da média.', true, 'AVG() soma os valores não-NULL e divide pela quantidade de valores não-NULL, ignorando completamente os NULLs.', 'basic', 'Agregação'),
+('O operador IN substitui múltiplos OR com o mesmo campo.', true, 'WHERE cidade IN (''SP'', ''RJ'', ''BH'') é equivalente a WHERE cidade = ''SP'' OR cidade = ''RJ'' OR cidade = ''BH''.', 'basic', 'Filtros'),
+('ALTER TABLE permite adicionar, modificar ou remover colunas de uma tabela existente.', true, 'ALTER TABLE é um comando DDL que modifica a estrutura de uma tabela sem precisar recriá-la.', 'basic', 'DDL'),
+('Uma coluna definida como UNIQUE pode conter múltiplos valores NULL.', true, 'Na maioria dos SGBDs, NULL não viola a restrição UNIQUE, pois NULL não é igual a NULL. Múltiplos NULLs são permitidos.', 'basic', 'Constraints'),
+('MAX() e MIN() funcionam apenas com colunas numéricas.', false, 'MAX() e MIN() funcionam com números, datas E textos (ordem alfabética). Ex: MAX(nome) retorna o último nome alfabeticamente.', 'basic', 'Agregação'),
+
+-- INTERMEDIATE (12 perguntas)
+('Um LEFT JOIN retorna todos os registros da tabela da esquerda, mesmo sem correspondência na direita.', true, 'LEFT JOIN mantém todos os registros da tabela esquerda. Para registros sem correspondência, as colunas da direita ficam NULL.', 'intermediate', 'JOINs'),
+('INNER JOIN retorna registros que existem em ambas as tabelas.', true, 'INNER JOIN retorna apenas os registros que têm correspondência nas duas tabelas. Registros sem par são excluídos.', 'intermediate', 'JOINs'),
+('A cláusula HAVING filtra grupos antes da execução do GROUP BY.', false, 'HAVING filtra DEPOIS do agrupamento. A ordem é: WHERE (filtra linhas) → GROUP BY (agrupa) → HAVING (filtra grupos).', 'intermediate', 'Agregação'),
+('Uma subquery no FROM é chamada de subquery correlacionada.', false, 'Subquery no FROM é uma "derived table" ou "inline view". Subquery correlacionada é a que referencia a query externa em seu WHERE.', 'intermediate', 'Subqueries'),
+('RIGHT JOIN é o espelho do LEFT JOIN, retornando todos da tabela da direita.', true, 'Exatamente. RIGHT JOIN mantém todos os registros da tabela direita, com NULLs para colunas da esquerda sem correspondência.', 'intermediate', 'JOINs'),
+('UNION remove duplicatas entre os resultados, enquanto UNION ALL mantém todos.', true, 'UNION aplica DISTINCT implicitamente (mais lento). UNION ALL concatena tudo sem verificar duplicatas (mais rápido).', 'intermediate', 'Conjunto'),
+('Uma VIEW armazena fisicamente os dados da query no disco.', false, 'Uma VIEW é uma query salva, não dados. Cada vez que você consulta uma VIEW, a query subjacente é executada. (Exceto Materialized Views)', 'intermediate', 'Views'),
+('CROSS JOIN gera o produto cartesiano entre duas tabelas.', true, 'CROSS JOIN combina cada linha da primeira tabela com cada linha da segunda. Se A tem 10 linhas e B tem 5, o resultado tem 50 linhas.', 'intermediate', 'JOINs'),
+('Subqueries sempre retornam apenas um valor escalar.', false, 'Subqueries podem retornar um valor escalar, uma coluna, uma linha ou até uma tabela inteira, dependendo de onde são usadas.', 'intermediate', 'Subqueries'),
+('EXISTS é mais eficiente que IN quando a subquery retorna muitos registros.', true, 'EXISTS para ao encontrar o primeiro match. IN precisa comparar com todos os valores. Para grandes conjuntos, EXISTS tende a ser mais rápido.', 'intermediate', 'Performance'),
+('Você pode fazer JOIN de uma tabela com ela mesma (self join).', true, 'Self join é útil para tabelas hierárquicas, como funcionários e seus gestores na mesma tabela employees.', 'intermediate', 'JOINs'),
+('GROUP BY pode agrupar por múltiplas colunas simultaneamente.', true, 'GROUP BY col1, col2 cria grupos para cada combinação única de col1 e col2. Útil para análises multidimensionais.', 'intermediate', 'Agregação'),
+
+-- ADVANCED (8 perguntas)
+('Uma CTE (Common Table Expression) é sempre mais performática que uma subquery equivalente.', false, 'CTEs e subqueries geralmente têm performance similar — o otimizador decide. CTEs são mais legíveis, não necessariamente mais rápidas.', 'advanced', 'CTEs'),
+('O isolamento SERIALIZABLE garante que transações concorrentes produzam o mesmo resultado que se executadas em série.', true, 'SERIALIZABLE é o nível mais alto de isolamento ACID. Elimina dirty reads, non-repeatable reads e phantom reads, mas reduz concorrência.', 'advanced', 'Transactions'),
+('Índices sempre melhoram a performance de queries SELECT.', false, 'Índices aceleram SELECTs mas tornam INSERT, UPDATE e DELETE mais lentos. Muitos índices podem piorar a performance geral.', 'advanced', 'Índices'),
+('Window Functions (funções de janela) são executadas depois do GROUP BY.', false, 'Window Functions são processadas DEPOIS do WHERE mas ANTES do ORDER BY final. Elas não reduzem o número de linhas como GROUP BY.', 'advanced', 'Window Functions'),
+('RANK() e DENSE_RANK() produzem sempre os mesmos resultados.', false, 'RANK() pula números após empates (1,2,2,4). DENSE_RANK() não pula (1,2,2,3). A diferença aparece quando há empates.', 'advanced', 'Window Functions'),
+('Um índice composto (A, B) também é eficiente para queries que filtram apenas pela coluna B.', false, 'Índices compostos seguem a regra do prefixo mais à esquerda. Um índice em (A, B) ajuda queries em A ou (A, B), mas não só em B.', 'advanced', 'Índices'),
+('ROLLBACK desfaz todas as operações desde o último COMMIT ou início da transação.', true, 'ROLLBACK é o mecanismo de desfazer transações. Garante que operações parcialmente executadas não corrompam os dados.', 'advanced', 'Transactions'),
+('EXPLAIN (ou EXPLAIN ANALYZE) mostra como o banco de dados executa uma query.', true, 'EXPLAIN exibe o plano de execução do otimizador. EXPLAIN ANALYZE executa a query e mostra o plano real com tempos, essencial para otimização.', 'advanced', 'Performance');
